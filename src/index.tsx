@@ -4,6 +4,8 @@ import './index.css';
 import App from './scripts/App';
 import * as serviceWorker from './serviceWorker';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 (window as any).app = <App/>;
 
 ReactDOM.render((window as any).app, document.getElementById('root'));
