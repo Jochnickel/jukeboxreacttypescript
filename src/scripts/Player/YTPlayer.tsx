@@ -57,13 +57,13 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
         );
     }
 
-    pause() {
+    public pause() {
     }
 
-    play() {
+    public play() {
     }
 
-    loadURL(url: string) {
+    public loadURL(url: string) {
     }
 
 }

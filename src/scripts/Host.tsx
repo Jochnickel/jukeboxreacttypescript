@@ -14,8 +14,8 @@ export default class Host extends React.Component {
             this.state.next = this.state.player;
         }
     };
-    private player1 = <SmartPlayer player={SmartPlayer.YOUTUBE} url={"PCicKydX5GE"} onEnd={this.playNext}/>;
-    private player2 = <YTPlayer />;
+    private player1 = <SmartPlayer autoplay={true} player={SmartPlayer.YOUTUBE} url={"PCicKydX5GE"} onEnd={this.playNext}/>;
+    private player2 = <SmartPlayer onEnd={this.playNext} player={SmartPlayer.YOUTUBE} url={"PCicKydX5GE"}/>;
 
     state = {
         player: this.player1,
@@ -25,6 +25,7 @@ export default class Host extends React.Component {
     render() {
         return (
             <>
+                <h1>hi</h1>
                 {this.state.player}
             </>
         );

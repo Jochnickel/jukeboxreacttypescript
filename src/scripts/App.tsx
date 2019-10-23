@@ -10,7 +10,7 @@ export default class App extends React.Component {
 
     constructor(props: any) {
         super(props);
-        this.main = <Host/>;
+        this.main = <Home/>;
 
     }
 
