@@ -12,11 +12,10 @@ export default class Home extends React.Component {
 
     render() {
         return (<>
-            <Modals show={this.hostModal.show}> title="Host a Playlist"</Modals>
+            <Modals title="a" body={<></>} buttons={[{text:"a",variant:"primary",onclick:()=>{}}]}></Modals>
             <Alert variant="info">Host or Join a playlist!</Alert>
             <Button variant="primary" block onClick={() => this.hostModal.show = true}>Host</Button>
             <Button variant="secondary" block>Join</Button>
-
         </>);
     }
 }

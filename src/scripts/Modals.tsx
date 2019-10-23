@@ -1,19 +1,24 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-export default class Modals extends React.Component {
+interface Props {
+    title: string;
+    body: ReactElement;
+}
+
+export default class Modals extends React.Component<Props> {
     state = {
         show: false,
         buttons: [<></>]
     };
     props = {
-        title: undefined,
-        body: undefined,
+        title: "",
+        body: <></>,
         buttons: [{
             text: "OK",
             variant: "primary",
-            onclick: undefined
+            onclick: this.handleClose
         }]
 
     };
