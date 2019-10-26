@@ -1,7 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import HostLobbyDialog from "./HostLobbyDialog";
+import LinkButton from "./LinkButton";
 
 interface props {
     app: any;
@@ -15,13 +14,11 @@ export default class Home extends React.Component<props> {
     }
 
 
-
     render() {
         return (<>
             <Alert variant="info">Host or Join a playlist!</Alert>
-            <Button variant="primary" block onClick={()=>{}}>Host</Button>
-            <HostLobbyDialog/>
-            <Button variant="secondary" block>Join</Button>
+            <LinkButton to={"hostdialog"} variant="primary" block>Host</LinkButton>
+            <LinkButton to={"joindialog"} variant="secondary" block>Join</LinkButton>
         </>);
     }
 }

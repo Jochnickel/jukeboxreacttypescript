@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae0d5964-0425-498f-bc78-8422cb68e2ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/scripts/Home/HostDialog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/Home/JoinDialog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/LinkButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/NavLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/Host.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Host.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/Player/YTPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Player/YTPlayer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/SmartPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/SmartPlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/HostLobbyDialog.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,10 +62,13 @@
     <property name="js.last.introduce.type" value="CONST" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/nodejs/node.exe" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/AppData/Local/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -69,14 +76,15 @@
     <property name="ts.external.directory.path" value="C:\Users\joachim.janke.FSET.000\WebstormProjects\jukeboxreacttypescript\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\PortableApps\PortableApps\XAMPP\App\xampp\htdocs\jukeboxreacttypescript\src\scripts\Player" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\joachim.janke.FSET.000\WebstormProjects\jukeboxreacttypescript\src\scripts\Home" />
       <recent name="D:\PortableApps\PortableApps\XAMPP\App\xampp\htdocs\jukeboxreacttypescript\src\scripts\PlayList" />
       <recent name="D:\PortableApps\PortableApps\XAMPP\App\xampp\htdocs\jukeboxreacttypescript\src\scripts\Players" />
       <recent name="D:\PortableApps\PortableApps\XAMPP\App\xampp\htdocs\jukeboxreacttypescript\src\styles" />
       <recent name="D:\PortableApps\PortableApps\XAMPP\App\xampp\htdocs\jukeboxreacttypescript\src\scripts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PortableApps\PortableApps\XAMPP\App\xampp\htdocs\jukeboxreacttypescript\src\scripts\Player" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -122,7 +130,7 @@
       <workItem from="1571367987988" duration="4835000" />
       <workItem from="1571820179328" duration="16552000" />
       <workItem from="1572083768843" duration="602000" />
-      <workItem from="1572084402066" duration="6429000" />
+      <workItem from="1572084402066" duration="13311000" />
     </task>
     <task id="LOCAL-00001" summary="init structure">
       <created>1570813360431</created>
@@ -138,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571829978734</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="player structure">
+      <created>1572092194983</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572092194984</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

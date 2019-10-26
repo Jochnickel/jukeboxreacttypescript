@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import {BrowserRouter, Link} from "react-router-dom";
+import NavLink from "./NavLink";
 
 
 export default class Footer extends React.Component {
@@ -8,8 +10,8 @@ export default class Footer extends React.Component {
         return (
             <Navbar fixed="bottom" bg="dark" variant="dark">
                 <Nav className="mr-auto">
-                    <Nav.Link href="">Home</Nav.Link>
-                    <Nav.Link href="#current">Current...</Nav.Link>
+                    <NavLink to={"/"}>Home</NavLink>
+                    <Link to={"current"}><Nav.Link href="#current">Current...</Nav.Link></Link>
                 </Nav>
                 <Navbar.Brand href="">
                     <img
