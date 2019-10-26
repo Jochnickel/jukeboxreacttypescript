@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae0d5964-0425-498f-bc78-8422cb68e2ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/scripts/API.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/HostLobbyDialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/PlayList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/PlayList/PlayListItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/PlayList/SearchField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/Host.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Host.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/Player/YTPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Player/YTPlayer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/SmartPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/SmartPlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/App.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,17 +56,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/scripts/Player" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/nodejs/node.exe" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/AppData/Local/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
-    <property name="ts.external.directory.path" value="D:\PortableApps\PortableApps\XAMPP\App\xampp\htdocs\jukeboxreacttypescript\node_modules\typescript\lib" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="ts.external.directory.path" value="C:\Users\joachim.janke.FSET.000\WebstormProjects\jukeboxreacttypescript\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -124,6 +121,8 @@
       <workItem from="1571157070032" duration="17791000" />
       <workItem from="1571367987988" duration="4835000" />
       <workItem from="1571820179328" duration="16552000" />
+      <workItem from="1572083768843" duration="602000" />
+      <workItem from="1572084402066" duration="6429000" />
     </task>
     <task id="LOCAL-00001" summary="init structure">
       <created>1570813360431</created>

@@ -2,7 +2,7 @@
   align-items: center;
   background-color: #282c34;
   color: white;
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   justify-content: center;

@@ -52,7 +52,7 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
                              onEnd={this.props.onEnd}
                     />
                 </div>
-                <Card.ImgOverlay onClick={this.onClick}>{this.state.statusText}</Card.ImgOverlay>
+                {/*<Card.ImgOverlay onClick={this.onClick}>{this.state.statusText}</Card.ImgOverlay>*/}
             </Card>
         );
     }

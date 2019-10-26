@@ -28,6 +28,7 @@ export default class SmartPlayer extends React.Component<props> implements IPlay
             case players.YOUTUBE: // class YTPlayer implements IPLayer
                 // @ts-ignore
                 // type 'Element' is missing following properties from IPlayer: play, pause
+
                 this.player = <YTPlayer url={props.url} onEnd={props.onEnd} autoplay={props.autoplay} />;
                 break;
             case players.SPOTIFY:

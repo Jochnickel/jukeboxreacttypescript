@@ -1,5 +1,4 @@
 import React from "react";
-import YTPlayer from "./Player/YTPlayer";
 import SmartPlayer from "./SmartPlayer";
 
 export default class Host extends React.Component {
