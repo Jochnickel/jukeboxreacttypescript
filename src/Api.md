@@ -1,0 +1,1 @@
+post "http://yt-party.com/api/lobby" creates lobby

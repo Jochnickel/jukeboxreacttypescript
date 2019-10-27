@@ -2,17 +2,18 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {Link, NavLink} from "react-router-dom";
+import API from "./API";
 
 
 export default class Footer extends React.Component {
     render() {
-        const o = JSON.parse(localStorage["session"]);
-        const current = localStorage["session"] ? <Link className={"nav-link"} to={"../lobby/"+o.hash}>Current</Link> : <></>;
+        const sess = API.getSavedSession();
+        const currentLink = sess ? <Link className={"nav-link"} to={"../lobby/"+sess.hash}>Current</Link> : <></>;
         return (
             <Navbar fixed="bottom" bg="dark" variant="dark">
                 <Nav className="mr-auto">
                     <NavLink className={"nav-link"} exact={true} to={"/"}>Home</NavLink>
-                    {current}
+                    {currentLink}
                 </Nav>
                 <Navbar.Brand href="">
                     <img

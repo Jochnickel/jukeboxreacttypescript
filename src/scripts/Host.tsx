@@ -1,7 +1,10 @@
 import React from "react";
 import SmartPlayer from "./SmartPlayer";
+import PlayList from "./PlayList";
+import ILobby from "./ILobby";
+import {RouteComponentProps} from "react-router";
 
-export default class Host extends React.Component {
+export default class Host extends React.Component<RouteComponentProps & ILobby> {
     constructor(props: any) {
         super(props);
     }
@@ -26,6 +29,7 @@ export default class Host extends React.Component {
             <>
                 <h1>hi</h1>
                 {this.state.player}
+                <PlayList hash={this.props.hash}/>
             </>
         );
     }
