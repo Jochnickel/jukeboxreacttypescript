@@ -1,27 +1,29 @@
 import React from "react";
 import {Button, Form} from "react-bootstrap";
+import {withRouter, RouteComponentProps} from "react-router-dom";
+import API from "../API";
 
-export default class HostDialog extends React.Component {
-    constructor(props: any) {
-        super(props);
-
-    }
-
+class HostDialog extends React.Component<RouteComponentProps> {
     catchSubmit(event: any) {
         const form = event.currentTarget;
         event.preventDefault();
-        // action="http://yt-party.com/api/lobby" method="post"
-        const request = new XMLHttpRequest();
-        request.open('POST', 'http://yt-party.com/api/lobbby', true);
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        request.send(new FormData(form));
+        const formData = new FormData(form);
+        // wtf
+        API.post("http://yt-party.com/api/lobby",
+            new FormData(form),
+            d => {
+                localStorage["session"] = JSON.stringify(d.lobby);
+                this.props.history.push("/host");
+        });
+
     }
 
     render() {
         return (
             <>
-                <Form autoComplete="on" action="http://yt-party.com/api/lobby" target="asd" method="post">
-                    <iframe name="asd" style={{background: "lavender"}}></iframe>
+                {/*<Form autoComplete="on" action="http://yt-party.com/api/lobby" target="asd" method="post">*/}
+                <Form autoComplete="on" action="http://yt-party.com/api/lobby" onSubmit={this.catchSubmit.bind(this)}
+                      method="post">
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Lobby name</Form.Label>
                         <Form.Control name="name" placeholder="Enter some name"/>
@@ -39,3 +41,5 @@ export default class HostDialog extends React.Component {
         );
     }
 }
+
+export default withRouter(HostDialog);

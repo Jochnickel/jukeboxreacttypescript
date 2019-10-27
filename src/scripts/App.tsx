@@ -13,28 +13,19 @@ import LinkButton from "./LinkButton";
 export default class App extends React.Component {
     main = <Host/>;
 
-    constructor(props: any) {
-        super(props);
-        // this._main = <Home/>;
-        // this.setMain(<Home/>);
-    }
-
     render() {
+
         return (
             <BrowserRouter>
                 <div className="App">
                     <div className="container">
                         <Route path="/" exact={true} component={Home}/>
                         <Route path="/host" exact={true} component={Host}/>
-                        <Route path="/client" exact={true} component={Client}/>
-                        <Route path="/hostdialog" exact={true}>
-                            <LinkButton to={"/"} block>Back</LinkButton>
-                            <HostDialog/>
-                        </Route>
-                        <Route path="/joindialog" exact={true}>
-                            <LinkButton to={"/"} block>Back</LinkButton>
-                            <JoinDialog/>
-                        </Route>
+                        <Route path="/lobby" component={Client}/>
+
+                        <Route path={["/hostdialog","/joindialog"]} exact={true}> <LinkButton to={"/"} block>Back</LinkButton> </Route>
+                        <Route path="/hostdialog" exact={true} component={HostDialog}/>
+                        <Route path="/joindialog" exact={true} component={JoinDialog}/>
                         <Footer/>
                     </div>
                 </div>
