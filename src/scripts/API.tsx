@@ -21,20 +21,96 @@ export default class API {
             .then(callbackF);
     }
 
-    // extracts argument after / like ("asdASD/lobby/0123/","lobby")=>0123
-    public static arg(from: string, name: string) {
-        console.log("arg", from);
-        const out = from.replace(new RegExp(".*/" + name + "/"), "").replace(/\/.*/, "");
-        console.log("arg", out);
-        return out;
+    public static getToken(callback: (token: string) => any) {
+        if (localStorage.token) {
+            callback(localStorage.token);
+            return;
+        }
+        fetch("http://yt-party.com/api/token", {method: "post"}).then(r => {
+            const token = r.headers.get("Authorization")!;
+            localStorage.token = token;
+            callback(token);
+        });
     }
 
-    public static setSavedSession(lobby: object) {
-        localStorage["session"] = JSON.stringify(lobby);
+
+    public static lobby(method: string, body: any, callback: (lobby: any) => any) {
+        this.getToken(token => {
+            fetch("http://yt-party.com/api/lobby", {
+                method: method,
+                body: body,
+                headers: {Authorization: token}
+            }).then(r => {
+                if (r.status === 200) {
+                    r.json().then(d => {
+                        callback(d.data.lobby)
+                    })
+                } else {
+                    console.error(r);
+                    callback(null);
+                }
+            })
+        });
     }
 
-    public static getSavedSession() {
-        return {name: "", hash: "c5626", owns_lobby: "1", owner: "12345678901234568"};
-        // return localStorage["session"] && JSON.parse(localStorage["session"]);
+    public static postLobby(password: string, callback: (lobby: object | null) => any) {
+        const body = JSON.stringify({pass: password});
+        this.lobby("post", body, lobby => {
+            if (lobby) {
+                localStorage.lobby = JSON.stringify(lobby);
+            }
+            callback(lobby);
+        });
+    }
+
+    public static getLobby(callback: (lobby: object | null) => any) {
+        if (localStorage.lobby) {
+            callback(JSON.parse(localStorage.lobby));
+            return;
+        }
+        this.lobby("get", undefined, lobby => {
+            if (lobby) {
+                localStorage.lobby = JSON.stringify(lobby[0]);
+                callback(lobby[0]);
+            } else {
+                callback(null);
+            }
+        });
+    }
+
+    public static deleteLobby(callback: (lobby: object | null) => any) {
+        this.lobby("delete", undefined, callback);
+    }
+
+    public static getPlaylist(hash: string, callback:(playlist: any)=>any){
+        this.getToken(token=>{
+            fetch("http://yt-party.com/api/lobby/"+hash+"/playlist",{
+                method: "get",
+                headers: { Authorization: token }
+            }).then(r=>{
+                if (r.status === 200) {
+                    r.json().then(d => {
+                        callback(d.data.playlist);
+                    })
+                } else {
+                    console.error(r);
+                    callback(null);
+                }
+            })
+        });
+    }
+
+    public static postSong(hash: string, url: string, title: string){
+        this.getToken(token=>{
+            fetch("http://yt-party.com/api/lobby/"+hash+"/song",{
+                method: "post",
+                headers: {Authorization: token},
+                body: JSON.stringify({url:url,title:title})
+            }).then(r=>{
+                r.json().then(console.log)
+            });
+        })
     }
 }
+
+(window as any).api = API;

@@ -11,23 +11,24 @@ import API from "./API";
 
 
 export default class App extends React.Component {
-    main = <Home app={this}/>;
-
 
 
     render() {
-        const hash = API.arg(document.location.pathname,"lobby") || "";
         return (
             <BrowserRouter>
                 <div className="App">
                     <div className="container">
+
                         <Route path="/" exact={true} component={Home}/>
-                        <Route path="/host" exact={true}></Route>
+                        <Route path="/host" exact={true}/>
                         <Route path="/lobby/:hash" component={Client}/>
 
-                        <Route path={["/hostdialog","/joindialog"]} exact={true}> <LinkButton to={"/"} block>Back</LinkButton> </Route>
+                        <Route path={["/hostdialog", "/joindialog"]} exact={true}>
+                            <LinkButton to={"/"} block>Back</LinkButton>
+                        </Route>
                         <Route path="/hostdialog" exact={true} component={HostDialog}/>
                         <Route path="/joindialog" exact={true} component={JoinDialog}/>
+
                         <Footer/>
                     </div>
                 </div>

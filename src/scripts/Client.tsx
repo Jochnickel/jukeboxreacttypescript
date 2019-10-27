@@ -5,9 +5,11 @@ import ILobby from "./ILobby";
 
 export default class Client extends React.Component<RouteComponentProps & ILobby>{
     render() {
+        const hash = (this.props.match.params as any).hash;
+        console.log("render(client)",hash);
         return (
             <>
-                <Host hash={(this.props.match.params as any).hash} {...this.props}/>
+                <Host hash={hash} {...this.props}/>
             </>
         );
     }

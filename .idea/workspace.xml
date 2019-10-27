@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ae0d5964-0425-498f-bc78-8422cb68e2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/API.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/API.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Client.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Home/HostDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Home/HostDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/PlayList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/PlayList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/PlayList/VoteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/PlayList/VoteButton.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,6 +130,7 @@
       <workItem from="1572084402066" duration="28963000" />
       <workItem from="1572136347644" duration="79000" />
       <workItem from="1572165451449" duration="20457000" />
+      <workItem from="1572188319759" duration="11564000" />
     </task>
     <task id="LOCAL-00001" summary="init structure">
       <created>1570813360431</created>

@@ -5,15 +5,21 @@ import API from "../API";
 
 class HostDialog extends React.Component<RouteComponentProps> {
     catchSubmit(event: any) {
-        const form = event.currentTarget;
         event.preventDefault();
-        const formData = new FormData(form);
+        const formData = JSON.stringify(new FormData(event.currentTarget));
         // wtf
-        API.post("http://yt-party.com/api/lobby",
-            new FormData(form),
-            d => {
-                localStorage["session"] = JSON.stringify(d.lobby);
-                this.props.history.push("/host");
+        API.getToken(token => {
+            fetch("https://cors-anywhere.herokuapp.com/http://yt-party.com/api/lobby", {
+                method: "post",
+                headers: {
+                    Authorization: token
+                },
+                body: formData
+            }).then(r=>r.json()).then(j=>{
+                console.log(j);
+                // localStorage["session"] = JSON.stringify(d.lobby);
+                // this.props.history.push("/host");
+            });
         });
 
     }
@@ -21,7 +27,6 @@ class HostDialog extends React.Component<RouteComponentProps> {
     render() {
         return (
             <>
-                {/*<Form autoComplete="on" action="http://yt-party.com/api/lobby" target="asd" method="post">*/}
                 <Form autoComplete="on" action="http://yt-party.com/api/lobby" onSubmit={this.catchSubmit.bind(this)}
                       method="post">
                     <Form.Group controlId="formBasicEmail">
@@ -31,7 +36,8 @@ class HostDialog extends React.Component<RouteComponentProps> {
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control name="pass" type="password" placeholder="Password" defaultValue={"asd"}/>
-                        <Form.Control name="user_id" placeholder="Password" defaultValue={12345678901234567}/>
+                        <Form.Control className={"d-none"} name="user_id" placeholder="Password"
+                                      defaultValue={12345678901234567}/>
                     </Form.Group>
                     <Button variant="primary" type="submit" onSubmit={this.catchSubmit} block>
                         Submit
