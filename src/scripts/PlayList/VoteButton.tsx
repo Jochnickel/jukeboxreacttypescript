@@ -1,10 +1,18 @@
-import React from "react";
-import {Button} from "react-bootstrap";
+import {ButtonProps} from "react-bootstrap";
+import {Component} from "react";
 
-export default function VoteButton(props: any) {
-    props.variant = (props.plus) ? "outline-success" : "outline-danger";
-    props.plus = undefined;
-    return(
-        <Button {...props}/>
-    );
+interface props {
+    plus: boolean;
+}
+
+export default class VoteButton extends Component<ButtonProps & props> {
+    constructor(props: any) {
+        const p;
+        props.forEach((d: any)=>{
+            p
+        });
+        p.variant = (p.plus) ? "outline-success" : "outline-danger";
+        p["plus"] = undefined;
+        super(p);
+    }
 }
