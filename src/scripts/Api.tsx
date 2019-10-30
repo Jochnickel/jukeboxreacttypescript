@@ -1,13 +1,32 @@
-export default class API {
-    public static post(url: string, body: FormData, callbackF: (d: any) => any) {
-        fetch("https://cors-anywhere.herokuapp.com/" + url, {
-            method: "post",
-            body: body
-        })
-            .then(r => r.json())
-            .then(j => j.data)
-            .then(callbackF);
-    }
+const AUTH="Authorization";
+const GET="GET";
+const POST="POST";
+const PUT="PUT";
+const DEL="DELETE";
+
+export default class Api {
+	public static lobby={
+		get = (hash: string) => {
+			return this.get("http://yt-party.com/api/lobby/"+hash);
+		}
+	}
+	public static get(url: string){
+		return fetch(url, {
+			method: GET,
+			headers: {
+				AUTH: this.token()
+			}
+		});
+	}
+	public static post(url: string, body: FormData) {
+		return fetch("https://cors-anywhere.herokuapp.com/" + url, {
+            method: POST,
+			body: body,
+			headers: {
+				AUTH: this.token()
+			}
+		});
+	}
 
     public static get(url: string, callbackF: (d: any) => any) {
         fetch(url, {
