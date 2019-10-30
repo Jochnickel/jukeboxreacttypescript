@@ -20,7 +20,7 @@ export default class Api {
 	}
 	public static post(url: string, body: FormData) {
 		return fetch("https://cors-anywhere.herokuapp.com/" + url, {
-            method: POST,
+      method: POST,
 			body: body,
 			headers: {
 				AUTH: this.token()
@@ -131,5 +131,27 @@ export default class Api {
         })
     }
 }
+
+class Token {
+	private final GET_TOKEN_URL = "http://yt-party.com/api/token";
+	private token = new Secret<string>(localStorage["token"])
+	private static setToken(token: string){
+		this.tokenDontUseDirectly = token;
+		localStorage
+	private interface iData {
+		method: string,
+		[any: string]: any
+	}
+	private fetchWithToken(url:string, data?: iData){
+		data.headers = data.headers || {};
+		data.headers.Authorization = this.token;
+		return fetch(url, data);
+	}	
+
+	public fetch(url: string, data: iData){
+		return new Promise((y,n)=>{
+			if (token){
+				fetchWithToken(url,data).then(r=>{
+					
 
 (window as any).api = API;
