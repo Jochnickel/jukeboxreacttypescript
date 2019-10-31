@@ -9,8 +9,8 @@ export default class Token {
 		localStorage["token"]= token;
 	}
 	private interface iData {
-		method: string,
-		[any: string]: any
+		method: string;
+		[any: string]: any;
 	}
 	private fetchWithToken(url:string, data?: iData){
 		data = data || {};
