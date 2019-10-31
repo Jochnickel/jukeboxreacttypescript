@@ -7,6 +7,7 @@ export default class Lobby extends React.Component {
 			this.setState({ lobby });
 		});
 	}
+	}
 
 	render(){
 		const {lobby} = this.state;

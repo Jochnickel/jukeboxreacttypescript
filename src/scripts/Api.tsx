@@ -40,15 +40,15 @@ export default class Api {
 							}
 						}
 					}
-					index.post = ()=> Token.fetch(url4,{method:POST});
+					index.post = (data:{url:string,name:string})=> Token.fetch(url4,{method:POST,body:JSON.stringify(data)});
 					return index;
 				})()
 			};
 		}
 
 		index.get  = () => Token.fetch(url2,{method: GET});
-		index.post = () => Token.fetch(url2,{method:POST});
-
+		index.post = (data:{pass:string,name?:string}) => 
+			Token.fetch(url2,{method:POST,body:JSON.stringify(data)});
 		return index;
 	})();
 }
