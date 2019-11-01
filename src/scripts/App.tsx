@@ -1,18 +1,13 @@
 import React from 'react';
-import {BrowserRouter, Route, useParams} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import '../styles/App.css';
 import Footer from "./Footer";
 import Home from "./Home";
-import Client from "./Client";
 import HostDialog from "./Home/HostDialog";
 import JoinDialog from "./Home/JoinDialog";
 import LinkButton from "./LinkButton";
-import API from "./API";
-
-
+import Lobby from "./Lobby";
 export default class App extends React.Component {
-
-
     render() {
         return (
             <BrowserRouter>
@@ -21,7 +16,7 @@ export default class App extends React.Component {
 
                         <Route path="/" exact={true} component={Home}/>
                         <Route path="/host" exact={true}/>
-                        <Route path="/lobby/:hash" component={Client}/>
+                        <Route path="/lobby/:hash" component={Lobby}/>
 
                         <Route path={["/hostdialog", "/joindialog"]} exact={true}>
                             <LinkButton to={"/"} block>Back</LinkButton>

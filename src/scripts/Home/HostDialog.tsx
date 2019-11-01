@@ -1,26 +1,12 @@
 import React from "react";
 import {Button, Form} from "react-bootstrap";
 import {withRouter, RouteComponentProps} from "react-router-dom";
-import API from "../API";
 
 class HostDialog extends React.Component<RouteComponentProps> {
     catchSubmit(event: any) {
         event.preventDefault();
         const formData = JSON.stringify(new FormData(event.currentTarget));
-        // wtf
-        API.getToken(token => {
-            fetch("https://cors-anywhere.herokuapp.com/http://yt-party.com/api/lobby", {
-                method: "post",
-                headers: {
-                    Authorization: token
-                },
-                body: formData
-            }).then(r=>r.json()).then(j=>{
-                console.log(j);
-                // localStorage["session"] = JSON.stringify(d.lobby);
-                // this.props.history.push("/host");
-            });
-        });
+
 
     }
 

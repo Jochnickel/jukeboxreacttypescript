@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae0d5964-0425-498f-bc78-8422cb68e2ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/scripts/NavLink.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/API.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/API.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Api.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Client.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/Home/HostDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Home/HostDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Host.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Host.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/ILobby.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/ILobby.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Lobby.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Lobby.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/PlayList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/PlayList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/PlayList/VoteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/PlayList/VoteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Token.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/Token.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/Value.tsx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

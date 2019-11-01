@@ -1,3 +1,8 @@
 export default interface ILobby {
-    hash: string;
+    lobby: {
+        hash: string;
+        name: string;
+        owner: string;
+        owns_lobby: string;
+    };
 }

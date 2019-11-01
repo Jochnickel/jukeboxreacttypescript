@@ -1,36 +1,39 @@
-const AUTH="Authorization";
+const AUTH = "Authorization";
 const GET_TOKEN_URL = "http://yt-party.com/api/token";
 
-export default class Token { 
-	private token = localStorage["token"];
+interface iData {
+    method: string;
 
-	private static setToken(token: string){
-		this.token = token;
-		localStorage["token"]= token;
-	}
-	private interface iData {
-		method: string;
-		[any: string]: any;
-	}
-	private fetchWithToken(url:string, data?: iData){
-		data = data || {};
-		data.headers = data.headers || {};
-		data.headers[AUTH] = this.token;
-		return new Promise(done=>fetch(url,data).then(r=>{
-			this.setToken(r.headers[AUTH]);
-			done(r);
-		}));
-		return fetch(url, data);
-	}	
+    [any: string]: any;
+}
 
-	public fetch(url: string, data: iData){
-		if (token){
-			return this.fetchWithToken(url,data);
-		}
-		return new Promise(done=>
-			this.fetchWithToken(GET_TOKEN_URL).then(
-				this.fetchWithToken(url,data).then(done)
-			)
-		);
-	}
+export default class Token {
+    private static token = localStorage["token"]; //TODO: Token = null im localStorage
+
+    private static setToken(token: string) {
+        Token.token = token;
+        localStorage["token"] = token;
+    }
+
+    private static fetchWithToken(url: string, data?: iData | undefined):Promise<Response>{
+        data = data || {method: ""};
+        data.headers = data.headers || {};
+        data.headers[AUTH] = Token.token;
+        return new Promise(done => fetch(url, data).then(r => {
+            Token.setToken(r.headers.get(AUTH)!);
+            done(r);
+        }));
+    }
+
+    public static fetch(url: string, data: iData):Promise<Response> {
+        if (Token.token) {
+            return this.fetchWithToken(url, data);
+        }
+        return new Promise(done =>
+            fetch(GET_TOKEN_URL, {method: "POST"}).then(r => {
+            	this.setToken(r.headers.get(AUTH)!);
+                Token.fetchWithToken(url, data).then(done);
+            })
+        );
+    }
 }

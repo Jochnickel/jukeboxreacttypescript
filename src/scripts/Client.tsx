@@ -1,16 +1,12 @@
 import React from "react";
-import Host from "./Host";
-import {RouteComponentProps} from "react-router-dom";
 import ILobby from "./ILobby";
+import Host from "./Host";
 
-export default class Client extends React.Component<RouteComponentProps & ILobby>{
+export default class Client extends React.Component<ILobby>{
     render() {
-        const hash = (this.props.match.params as any).hash;
-        console.log("render(client)",hash);
+        console.log("render(client)");
         return (
-            <>
-                <Host hash={hash} {...this.props}/>
-            </>
+            <Host {...this.props}/>
         );
     }
 }

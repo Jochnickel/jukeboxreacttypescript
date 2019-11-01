@@ -2,9 +2,17 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {Link, NavLink} from "react-router-dom";
+import Api from "./Api";
 
 
 export default class Footer extends React.Component {
+    constructor(props:any) {
+        super(props);
+        Api.lobby.get().then(r=>{console.log("Footer",r)});
+    }
+
+    state = {currentLobby: undefined}
+
     render() {
         function f() {
             return {hash: "asd"};
