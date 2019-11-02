@@ -1,14 +1,13 @@
 import React from "react";
-
-export default class PlayList extends React.Component<{hash: string}>{
-    state = {
-        items: []
-    };
-
+import {Button} from "react-bootstrap";
+export default class PlayList extends React.Component<{playlist: any}>{
     render() {
+        console.log("playlist",this.props.playlist);
+        //const asd = (this.props.playlist as []).map(songs = > song.url);
         return (
             <>
-                {this.state.items}
+                {"asd"}
+                <Button/>
             </>
         );
     }
