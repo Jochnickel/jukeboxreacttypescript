@@ -2,23 +2,23 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {Link, NavLink} from "react-router-dom";
-import Api from "./Api";
-
+import store from "./Store";
+import ILobby from "./ILobby";
 
 export default class Footer extends React.Component {
-    constructor(props:any) {
+    constructor(props: any) {
         super(props);
-        Api.lobby.get().then(r=>{console.log("Footer",r)});
+        store.on("change", ()=>{
+           this.setState({lobby: store.getCurrentLobby()})
+        });
     }
+    state = {lobby: store.getCurrentLobby()};
 
-    state = {currentLobby: undefined}
 
     render() {
-        function f() {
-            return {hash: "asd"};
-        }
-        const sess = f();
-        const currentLink = sess ? <Link className={"nav-link"} to={"../lobby/"+sess.hash}>Current</Link> : <></>;
+        const {lobby} = this.state;
+        const hash = (lobby) ? (lobby! as ILobby).hash : undefined;
+        const currentLink = (lobby) ? <Link className={"nav-link"} to={"../lobby/"+hash}>Current</Link> : <></>;
         return (
             <Navbar fixed="bottom" bg="dark" variant="dark">
                 <Nav className="mr-auto">

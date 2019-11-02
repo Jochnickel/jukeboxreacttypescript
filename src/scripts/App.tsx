@@ -7,7 +7,24 @@ import HostDialog from "./Home/HostDialog";
 import JoinDialog from "./Home/JoinDialog";
 import LinkButton from "./LinkButton";
 import Lobby from "./Lobby";
+import Api from "./Api";
+import store from "./Store";
+
+(window as any).api = Api;
+
 export default class App extends React.Component {
+    constructor(props: any) {
+        super(props);
+        Api.lobby.get().then(r=> {
+            if (r.meta.code === 200) {
+                console.info("Footer", r);
+                const lobby = r.data.lobby[0];
+                store.setCurrentLobby(lobby);
+            } else {
+                console.info("Footer", r);
+            }
+        });
+    }
     render() {
         return (
             <BrowserRouter>

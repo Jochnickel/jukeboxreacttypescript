@@ -8,7 +8,7 @@ interface iData {
 }
 
 export default class Token {
-    private static token = localStorage["token"]; //TODO: Token = null im localStorage
+    private static token = (localStorage["token"]==="null") ? undefined : localStorage["token"]; //TODO: Token = null im localStorage
 
     private static setToken(token: string) {
         Token.token = token;

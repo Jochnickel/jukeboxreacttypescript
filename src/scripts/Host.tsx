@@ -1,20 +1,23 @@
 import React from "react";
 import ILobby from "./ILobby";
-// @ts-ignore
 import Api from "./Api";
+import SmartPlayer from "./SmartPlayer";
+import PlayList from "./PlayList";
 
-export default class Host extends React.Component<ILobby>{
-    constructor(props: ILobby) {
+export default class Host extends React.Component<{lobby:ILobby}>{
+    constructor(props: any) {
         super(props);
-        const hash = props.lobby!.hash;
-        Api.lobby(hash).playlist.get().then(console.log)
+        console.log("Host",props);
+        const hash = props.lobby.hash;
+        Api.lobby(hash).playlist.get().then(d=>this.setState({playlist:d.data.playlist}));
     }
-    state = {playlist:undefined};
+    state = {playlist:null};
 
     render() {
         return (
             <div>
-
+                <SmartPlayer player={SmartPlayer.YOUTUBE} url={""} onEnd={()=>{}}/>
+                <PlayList hash={this.props.lobby.hash}/>
             </div>
         );
     }
