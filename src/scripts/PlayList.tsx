@@ -4,7 +4,7 @@ import PlayListItem from "./PlayList/PlayListItem";
 export default class PlayList extends React.Component<{playlist: any}>{
     render() {
         console.log("playlist",this.props.playlist);
-        const items = (this.props.playlist as []).map((song, i)=>{return <PlayListItem key={i} Votable={true}/>})
+        const items = (this.props.playlist as []).map((song, i)=>{return <PlayListItem song={song} key={i} Votable={true}/>})
         return (
             <>
                 {items}

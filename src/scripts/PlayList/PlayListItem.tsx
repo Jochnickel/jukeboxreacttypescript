@@ -1,18 +1,14 @@
 import React from "react";
 import {Button, ButtonGroup, Media} from "react-bootstrap";
 import VoteButton from "./VoteButton";
+import ISong from "../ISong";
 
 interface props {
     Votable: boolean;
+    song: ISong;
 }
 
 export default class PlayListItem extends React.Component<props> {
-    constructor(props: any) {
-        super(props);
-
-    }
-
-
     render() {
         return (
             <Media as="li">
@@ -32,8 +28,8 @@ export default class PlayListItem extends React.Component<props> {
                     </p>
                 </Media.Body>
                 <ButtonGroup vertical>
-                    <VoteButton plus={true}>+</VoteButton>
-                    <VoteButton plus={false}>-</VoteButton>
+                    <VoteButton voted={this.props.song.voted_for} plus={true}>+</VoteButton>
+                    <VoteButton voted={this.props.song.voted_for} plus={false}>-</VoteButton>
                 </ButtonGroup>
             </Media>
         );
