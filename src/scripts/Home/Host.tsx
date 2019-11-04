@@ -1,10 +1,11 @@
 import React from "react";
-import ILobby from "./ILobby";
-import Api from "./Api";
-import SmartPlayer from "./SmartPlayer";
-import PlayList from "./PlayList";
+import ILobby from "../ILobby";
+import Api from "../Api";
+import SmartPlayer from "../Player/SmartPlayer";
+import PlayList from "../PlayList/PlayList";
 import {Button} from "react-bootstrap";
-import ISong from "./ISong";
+import ISong from "../ISong";
+import store from "../Store";
 
 export default class Host extends React.Component<{ lobby: ILobby }> {
     constructor(props: any) {
@@ -15,8 +16,11 @@ export default class Host extends React.Component<{ lobby: ILobby }> {
     state = {playlist: []};
 
     render() {
-        const song1: ISong | undefined = this.state.playlist[0];
+        const {playlist} = this.state;
+        console.log("asda host", playlist)
+        const song1: ISong | undefined = (playlist) && this.state.playlist[0];
         const playerURL = song1 && song1!.url;
+
         return (
             <div>
                 <SmartPlayer player={SmartPlayer.YOUTUBE} url={playerURL} onEnd={() => {
@@ -29,7 +33,7 @@ export default class Host extends React.Component<{ lobby: ILobby }> {
                             this.setState({playlist: r.data.playlist})
                         })
                 }>Add Song</Button>
-                <PlayList playlist={this.state.playlist}/>
+                <PlayList playlist={playlist}/>
             </div>
         );
     }

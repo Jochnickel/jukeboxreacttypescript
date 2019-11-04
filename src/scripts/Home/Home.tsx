@@ -1,7 +1,7 @@
 import React from "react";
 import Alert from "react-bootstrap/Alert";
-import LinkButton from "./LinkButton";
-import store from "./Store";
+import LinkButton from "../LinkButton";
+import store from "../Store";
 
 export default class Home extends React.Component {
     constructor(props: any) {

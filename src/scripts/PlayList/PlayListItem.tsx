@@ -1,14 +1,10 @@
 import React from "react";
-import {Button, ButtonGroup, Media} from "react-bootstrap";
+import {ButtonGroup, Media} from "react-bootstrap";
 import VoteButton from "./VoteButton";
-import ISong from "../ISong";
+import IPlayListItem from "./IPlayListItem";
+import VoteButtonGroup from "./VoteButtonGroup";
 
-interface props {
-    Votable: boolean;
-    song: ISong;
-}
-
-export default class PlayListItem extends React.Component<props> {
+export default class PlayListItem extends React.Component<IPlayListItem> {
     render() {
         return (
             <Media as="li">
@@ -19,18 +15,15 @@ export default class PlayListItem extends React.Component<props> {
                     alt=""
                 />
                 <Media.Body>
-                    <h5>List-based media object</h5>
-                    <p style={{fontSize:"5px"}}>
+                    <h5>{this.props.song.title}</h5>
+                    <p style={{fontSize: "5px"}}>
                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
                         ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
                         tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
                         fringilla. Donec lacinia congue felis in faucibus.
                     </p>
                 </Media.Body>
-                <ButtonGroup vertical>
-                    <VoteButton voted={this.props.song.voted_for} plus={true}>+</VoteButton>
-                    <VoteButton voted={this.props.song.voted_for} plus={false}>-</VoteButton>
-                </ButtonGroup>
+                <VoteButtonGroup song={this.props.song}/>
             </Media>
         );
     }

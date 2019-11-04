@@ -1,8 +1,8 @@
 import React from "react";
-import Api from "./Api";
+import Api from "../Api";
 import Client from "./Client";
 import Host from "./Host";
-import ILobby from "./ILobby";
+import ILobby from "../ILobby";
 
 export default class Lobby extends React.Component {
     constructor(props: any) {

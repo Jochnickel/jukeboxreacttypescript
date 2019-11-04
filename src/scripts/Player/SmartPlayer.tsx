@@ -1,9 +1,9 @@
 import React from "react";
-import IPlayerProps from "./Player/IPlayerProps";
-import IPlayer from "./Player/IPlayer";
-import YTPlayer from "./Player/YTPlayer";
-import SpotPlayer from "./Player/SpotPlayer";
-import DeezPlayer from "./Player/DeezPlayer";
+import IPlayerProps from "./IPlayerProps";
+import IPlayer from "./IPlayer";
+import YTPlayer from "./YTPlayer";
+import SpotPlayer from "./SpotPlayer";
+import DeezPlayer from "./DeezPlayer";
 
 enum players {
     YOUTUBE,

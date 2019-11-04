@@ -2,11 +2,11 @@ import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
 import '../styles/App.css';
 import Footer from "./Footer";
-import Home from "./Home";
+import Home from "./Home/Home";
 import HostDialog from "./Home/HostDialog";
 import JoinDialog from "./Home/JoinDialog";
 import LinkButton from "./LinkButton";
-import Lobby from "./Lobby";
+import Lobby from "./Home/Lobby";
 import Api from "./Api";
 import store from "./Store";
 

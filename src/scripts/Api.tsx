@@ -44,6 +44,7 @@ export default class Api {
                         method: POST,
                         body: JSON.stringify(data)
                     }).then(r => r.json());
+                    console.log(index);
                     return index;
                 })()
             };

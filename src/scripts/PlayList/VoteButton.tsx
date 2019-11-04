@@ -4,6 +4,7 @@ import React, {Component} from "react";
 interface props {
     plus: boolean;
     voted: any;
+    onClick: any;
 }
 
 export default class VoteButton extends Component<ButtonProps & props> {
