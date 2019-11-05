@@ -1,5 +1,9 @@
-export default interface IPlayerProps {
+import ISong from "../ISong";
+import IPlayerControls from "./IPlayerControls";
+
+export default interface IPlayerProps extends IPlayerControls{
     autoplay?: boolean;
-    url: string;
-    onEnd: ()=>any;
+    song: ISong;
+    onEnd?: ()=>any;
+    [any: string]: any;
 }

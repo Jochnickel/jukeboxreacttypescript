@@ -9,6 +9,7 @@ import LinkButton from "./LinkButton";
 import Lobby from "./Home/Lobby";
 import Api from "./Api";
 import store from "./Store";
+import ErrorPage from "./ErrorPage";
 
 (window as any).api = Api;
 
@@ -32,8 +33,10 @@ export default class App extends React.Component {
                     <div className="container">
 
                         <Route path="/" exact={true} component={Home}/>
+                        <Route path="/error/:message?" strict={false} component={ErrorPage}/>
+
                         <Route path="/host" exact={true}/>
-                        <Route path="/lobby/:hash" component={Lobby}/>
+                        <Route path="/lobby/:hash?" component={Lobby}/>
 
                         <Route path={["/hostdialog", "/joindialog"]} exact={true}>
                             <LinkButton to={"/"} block>Back</LinkButton>
@@ -41,7 +44,7 @@ export default class App extends React.Component {
                         <Route path="/hostdialog" exact={true} component={HostDialog}/>
                         <Route path="/joindialog" exact={true} component={JoinDialog}/>
 
-                        <Footer/>
+                        <Route component={Footer}/>
                     </div>
                 </div>
             </BrowserRouter>

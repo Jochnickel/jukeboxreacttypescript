@@ -1,8 +1,9 @@
 import React from "react";
-import YouTube from "react-youtube";
+import YouTube from "react-youtube-typescript";
 import Card from "react-bootstrap/Card";
 import IPlayer from "./IPlayer";
 import IPlayerProps from "./IPlayerProps";
+import getYouTubeID from "get-youtube-id-definately";
 
 
 export default class YTPlayer extends React.Component<IPlayerProps> implements IPlayer {
@@ -40,19 +41,24 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
         this.setState({statusText: "Error", blur: true});
     };
 
+    private onStateChange= (e: any) => {
+        console.log("yt onstate change",e.data===YouTube.PlayerState.PAUSED);
+        const ended = e.data===YouTube.PlayerState.ENDED;
+    };
+
     render() {
         return (
             <Card border="dark">
-                <div className={"container" + (this.state.blur ? " blur" : "")}>
+                <div style={{position: "relative",width:"100%",paddingBottom:"60%"}} className={"container" + (this.state.blur ? " blur" : "")}>
                     <YouTube className={"video"}
-                             videoId={this.props.url}
+                             videoId={getYouTubeID(this.props.song.url)}
                              opts={{playerVars: {"controls": 0, "showinfo": 0}}}
                              onReady={this.onReady}
                              onError={this.onError}
-                             onEnd={this.props.onEnd}
+                             onStateChange={this.onStateChange}
                     />
                 </div>
-                {/*<Card.ImgOverlay onClick={this.onClick}>{this.state.statusText}</Card.ImgOverlay>*/}
+                <Card.ImgOverlay onClick={this.onClick}>{this.state.statusText}</Card.ImgOverlay>
             </Card>
         );
     }

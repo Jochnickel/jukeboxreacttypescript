@@ -1,10 +1,9 @@
 import React from "react";
-import {ButtonGroup, Media} from "react-bootstrap";
-import VoteButton from "./VoteButton";
-import IPlayListItem from "./IPlayListItem";
+import {Media} from "react-bootstrap";
 import VoteButtonGroup from "./VoteButtonGroup";
+import ISong from "../ISong";
 
-export default class PlayListItem extends React.Component<IPlayListItem> {
+export default class PlayListItem extends React.Component<{song: ISong; [any:string]:any}> {
     render() {
         return (
             <Media as="li">

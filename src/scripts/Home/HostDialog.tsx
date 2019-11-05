@@ -21,13 +21,13 @@ class HostDialog extends React.Component<RouteComponentProps> {
             <>
                 <Form autoComplete="on" action="http://yt-party.com/api/lobby" onSubmit={this.catchSubmit.bind(this)}
                       method="post">
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group>
                         <Form.Label>Lobby name</Form.Label>
                         <Form.Control name="name" placeholder="Enter some name"/>
+                    </Form.Group>
+                    <Form.Group>
                         <Form.Label>Password</Form.Label>
                         <Form.Control name="pass" type="password" placeholder="Password" defaultValue={"asd"}/>
-                        <Form.Control className={"d-none"} name="user_id" placeholder="Password"
-                                      defaultValue={12345678901234567}/>
                     </Form.Group>
                     <Button variant="primary" disabled={this.state.pending} type="submit" block>
                         Submit

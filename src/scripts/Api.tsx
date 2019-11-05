@@ -44,7 +44,6 @@ export default class Api {
                         method: POST,
                         body: JSON.stringify(data)
                     }).then(r => r.json());
-                    console.log(index);
                     return index;
                 })()
             };
@@ -54,5 +53,20 @@ export default class Api {
         index.post = (data: { pass: string, name?: string }) =>
             Token.fetch(url2, {method: POST, body: JSON.stringify(data)}).then(r => r.json());
         return index;
+    })();
+
+    public static YT = (()=>{
+        const YT = ()=>{};
+        YT.randomVideo = ()=>{
+            const links = [
+                {url: "https://www.youtube.com/watch?v=FmRtF1rIuSQ", title: "Gubal 1"},
+                {url: "https://www.youtube.com/watch?v=nd6neK3a5es", title: "Gubal 2"},
+                {url: "https://www.youtube.com/watch?v=iNqL2QR-hFs", title: "Pirates"},
+                {url: "https://www.youtube.com/watch?v=h3p_9-R_siI", title: "Spacesauce"},
+                {url: "https://www.youtube.com/watch?v=JfO8uXlY1Wc", title: "Avengers"}
+            ];
+            return links[Math.floor(Math.random()*links.length)];
+        };
+        return YT;
     })();
 }

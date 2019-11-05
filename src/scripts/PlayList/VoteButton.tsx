@@ -10,8 +10,9 @@ interface props {
 export default class VoteButton extends Component<ButtonProps & props> {
     render() {
         const variant = (this.props.plus) ? "outline-success" : "outline-danger";
+        const props = Object.assign({...this.props},{variant: variant, plus: undefined, voted: undefined});
         return (
-            <Button variant={variant} plus={undefined} {...this.props}/>
+            <Button {...props}/>
         );
     }
 };

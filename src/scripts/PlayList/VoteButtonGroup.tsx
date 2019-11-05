@@ -1,10 +1,9 @@
 import React from "react";
-import {Button, ButtonGroup} from "react-bootstrap";
+import {ButtonGroup} from "react-bootstrap";
 import VoteButton from "./VoteButton";
 import ISong from "../ISong";
 import store from "../Store";
 import Api from "../Api";
-import {render} from "react-dom";
 
 export default class VoteButtonGroup extends React.Component<{ song: ISong }> {
     voteUp = () => this.vote(true);
@@ -21,7 +20,6 @@ export default class VoteButtonGroup extends React.Component<{ song: ISong }> {
     }
 
     render() {
-        const {song} = this.props;
         return (
             <ButtonGroup vertical>
                 <VoteButton onClick={this.voteUp} voted={this.props.song.voted_for === "UP"}

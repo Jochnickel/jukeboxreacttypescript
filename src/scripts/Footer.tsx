@@ -1,29 +1,37 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, RouteComponentProps} from "react-router-dom";
 import store from "./Store";
 import ILobby from "./ILobby";
+import Api from "./Api";
 
-export default class Footer extends React.Component {
+export default class Footer extends React.Component<RouteComponentProps> {
     constructor(props: any) {
         super(props);
-        store.on("change", ()=>{
-           this.setState({lobby: store.getCurrentLobby()})
+        store.on("change", () => {
+            this.setState({lobby: store.getCurrentLobby()})
         });
     }
+
     state = {lobby: store.getCurrentLobby()};
 
 
     render() {
         const {lobby} = this.state;
         const hash = (lobby) ? (lobby! as ILobby).hash : undefined;
-        const currentLink = (lobby) ? <Link className={"nav-link"} to={"../lobby/"+hash}>Current</Link> : <></>;
+        const deleteLobby = (lobby) && (<Link className={"nav-link"} to={"/"}
+                                              onClick={(e) => {
+                                                  Api.lobby(hash!).delete().then(_ => window.location.assign("/"));
+                                                  e.preventDefault();
+                                              }}>Delete Lobby</Link>);
+        const currentLink = (lobby) && <NavLink className={"nav-link"} to={"../lobby/" + hash}>Current</NavLink>;
         return (
             <Navbar fixed="bottom" bg="dark" variant="dark">
                 <Nav className="mr-auto">
                     <NavLink className={"nav-link"} exact={true} to={"/"}>Home</NavLink>
                     {currentLink}
+                    {deleteLobby}
                 </Nav>
                 <Navbar.Brand href="">
                     <img

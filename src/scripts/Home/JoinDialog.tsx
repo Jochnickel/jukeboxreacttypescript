@@ -1,7 +1,6 @@
 import React from "react";
-import {Alert, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import Api from "../Api";
-import store from "../Store";
 import {RouteComponentProps} from "react-router";
 
 export default class JoinDialog extends React.Component<RouteComponentProps> {
