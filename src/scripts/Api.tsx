@@ -31,7 +31,7 @@ export default class Api {
                     const index = (songID: string) => {
                         const url5 = url4 + "/" + songID;
                         return {
-                            delete: () => Token.fetch(url5, {method: DEL}).then(r => r.json()),
+                            delete: () => Token.fetch(url5, {method: DEL}).then(j=>j.json()),
                             vote: (action: string) => {
                                 const url6 = url5 + "/vote/" + action;
                                 return {
@@ -60,11 +60,17 @@ export default class Api {
         };
         YT.randomVideo = () => {
             const links = [
-                "https://www.youtube.com/watch?v=FmRtF1rIuSQ",
-                "https://www.youtube.com/watch?v=nd6neK3a5es",
-                "https://www.youtube.com/watch?v=iNqL2QR-hFs",
-                "https://www.youtube.com/watch?v=h3p_9-R_siI",
-                "https://www.youtube.com/watch?v=JfO8uXlY1Wc"
+                // "https://www.youtube.com/watch?v=FmRtF1rIuSQ",
+                // "https://www.youtube.com/watch?v=nd6neK3a5es",
+                // "https://www.youtube.com/watch?v=iNqL2QR-hFs",
+                // "https://www.youtube.com/watch?v=h3p_9-R_siI",
+                // "https://www.youtube.com/watch?v=JfO8uXlY1Wc"
+                "https://www.youtube.com/watch?v=wUF9DeWJ0Dk",
+                "https://www.youtube.com/watch?v=tPEE9ZwTmy0",
+                "https://www.youtube.com/watch?v=3HFBR0UQPes",
+                "https://www.youtube.com/watch?v=oiWWKumrLH8",
+                "https://www.youtube.com/watch?v=Wi-HjAXdKoA",
+                "https://www.youtube.com/watch?v=xLP9r6JeNzk"
             ];
             return links[Math.floor(Math.random() * links.length)];
         };

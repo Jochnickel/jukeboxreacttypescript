@@ -1,30 +1,31 @@
 import React from "react";
 import YouTube from "react-youtube-typescript";
 import Card from "react-bootstrap/Card";
-import IPlayer from "./IPlayer";
 import IPlayerProps from "./IPlayerProps";
 import getYouTubeID from "get-youtube-id-definately";
 import {useDoubleClick} from "doubleclicker";
 
+interface iTarget {
+    loadVideoById: any;
+    playVideo: any;
+    pauseVideo: any;
+    getPlayerState: any;
+}
 
-export default class YTPlayer extends React.Component<IPlayerProps> implements IPlayer {
-    static defaultProps = {
-        autoplay: false,
-        url: "2g811Eo7K8U",
-        onEnd: null
-    };
+export default class YTPlayer extends React.Component<IPlayerProps> {
     state = {
         statusText: "page loading...",
-        blur: false
+        blur: false,
+        videoID: getYouTubeID(this.props.song.url)
     };
-    private target: any;
+    private target!: iTarget;
 
 
     private onClick = (a: any) => {
         const e = a.currentTarget.parentNode;
         useDoubleClick({
             onClick: () => {
-                switch (this.target.getPlayerState()) {
+                switch (this.target && this.target.getPlayerState()) {
                     case 1:
                         this.target.pauseVideo();
                         this.setState({statusText: "Pause", blur: true});
@@ -60,9 +61,12 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
         this.setState({statusText: "Error", blur: true});
     };
 
-    private onStateChange = (e: any) => {
-        if (e.data === YouTube.PlayerState.ENDED) {
-            this.props.removeSong(this.props.song);
+    private onStateChange = (e: { data: number; target: iTarget}) => {
+        if (e.data === YouTube.PlayerState.ENDED) { // https://www.youtube.com/watch?v=wUF9DeWJ0Dk
+            this.props.removeSong(this.props.song).then(r=>{
+                console.log("deleted",r);
+            });
+            e.target.loadVideoById(getYouTubeID(this.props.song.url));
         }
     };
 
@@ -72,7 +76,7 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
                 <div style={{position: "relative", width: "100%", paddingBottom: "60%"}}
                      className={"container" + (this.state.blur ? " blur" : "")}>
                     <YouTube className={"video"}
-                             videoId={getYouTubeID(this.props.song.url)}
+                             videoId={this.state.videoID}
                              opts={{playerVars: {"controls": 0, "showinfo": 0}}}
                              onReady={this.onReady}
                              onError={this.onError}
@@ -82,15 +86,6 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
                 <Card.ImgOverlay onClick={this.onClick}>{this.state.statusText}</Card.ImgOverlay>
             </Card>
         );
-    }
-
-    public pause() {
-    }
-
-    public play() {
-    }
-
-    public loadURL(url: string) {
     }
 
 }

@@ -10,8 +10,10 @@ import Lobby from "./Home/Lobby";
 import Api from "./Api";
 import store from "./Store";
 import ErrorPage from "./ErrorPage";
+import Token from "./Token";
 
 (window as any).api = Api;
+(window as any).token = Token;
 
 export default class App extends React.Component {
     constructor(props: any) {

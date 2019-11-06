@@ -15,7 +15,7 @@ export default class Token {
         localStorage["token"] = token;
     }
 
-    private static fetchWithToken(url: string, data?: iData | undefined):Promise<Response>{
+    private static fetchHasToken(url: string, data?: iData | undefined):Promise<Response>{
         data = data || {method: ""};
         data.headers = data.headers || {};
         data.headers[AUTH] = Token.token;
@@ -27,12 +27,12 @@ export default class Token {
 
     public static fetch(url: string, data: iData):Promise<Response> {
         if (Token.token) {
-            return this.fetchWithToken(url, data);
+            return this.fetchHasToken(url, data);
         }
         return new Promise(done =>
             fetch(GET_TOKEN_URL, {method: "POST"}).then(r => {
             	this.setToken(r.headers.get(AUTH)!);
-                Token.fetchWithToken(url, data).then(done);
+                Token.fetchHasToken(url, data).then(done);
             })
         );
     }

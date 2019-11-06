@@ -5,7 +5,7 @@ import ILobbyControls from "../Player/ILobbyControls";
 import PlayList from "../PlayList/PlayList";
 import SearchField from "../PlayList/SearchField";
 
-export default class Client extends React.Component<{ lobby: ILobby; playlist: IPlaylist; song: any } & ILobbyControls> {
+export default class Client extends React.Component<{ lobby: ILobby; imgLib: any; playlist: IPlaylist; song: any } & ILobbyControls> {
 
     render() {
         return (<>

@@ -3,11 +3,12 @@ import ILobby from "./ILobby";
 
 class Store extends EventEmitter {
     private currentLobby: ILobby | undefined = undefined;
-    public getCurrentLobby = () :ILobby | undefined => this.currentLobby;
+    public getCurrentLobby = (): ILobby | undefined => this.currentLobby;
     public setCurrentLobby = (lobby: ILobby | undefined) => {
         this.currentLobby = lobby;
         this.emit("change");
     };
+
 }
 
 const store = new Store();

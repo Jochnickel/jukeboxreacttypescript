@@ -6,7 +6,7 @@ import IPlaylist from "../PlayList/IPlaylist";
 import ILobbyControls from "../Player/ILobbyControls";
 import SearchField from "../PlayList/SearchField";
 
-interface iProps{ lobby: ILobby; playlist: IPlaylist; song: any}
+interface iProps{ lobby: ILobby; playlist: IPlaylist; imgLib: any; song: any}
 
 export default class Host extends React.Component<iProps & ILobbyControls> {
     render() {
