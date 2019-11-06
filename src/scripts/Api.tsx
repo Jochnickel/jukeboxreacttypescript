@@ -1,5 +1,4 @@
 import Token from "./Token";
-import ISong from "./ISong";
 
 const GET = "GET";
 const POST = "POST";
@@ -18,7 +17,7 @@ export default class Api {
             const url3 = url2 + "/" + hash;
             return {
                 get: () => Token.fetch(url3, {method: GET}).then(r => r.json()),
-                put: () => Token.fetch(url3, {method: PUT}).then(r => r.json()),
+                put: (data: {}) => Token.fetch(url3, {method: PUT, body: JSON.stringify(data)}).then(r => r.json()),
                 delete: () => Token.fetch(url3, {method: DEL}).then(r => r.json()),
                 playlist: (() => {
                     const url4 = url3 + "/playlist";

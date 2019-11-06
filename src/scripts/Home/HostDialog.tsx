@@ -12,7 +12,7 @@ class HostDialog extends React.Component<RouteComponentProps> {
         Api.lobby.post({name:form.name.value, pass:form.pass.value}).then(r=> {
             store.setCurrentLobby(r.data.lobby);
             this.props.history.push("/lobby/"+r.data.lobby.hash);
-        }).catch(e=>this.setState({pending:false})); //TODO
+        }).catch(()=>this.setState({pending:false})); //TODO
     }
     state = {pending:false};
 
@@ -27,7 +27,7 @@ class HostDialog extends React.Component<RouteComponentProps> {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="pass" type="password" placeholder="Password" defaultValue={"asd"}/>
+                        <Form.Control autoFocus name="pass" type="password" placeholder="Password" />
                     </Form.Group>
                     <Button variant="success" disabled={this.state.pending} type="submit" block>
                         Submit

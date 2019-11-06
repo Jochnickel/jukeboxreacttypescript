@@ -12,6 +12,7 @@ export default class Host extends React.Component<iProps & ILobbyControls> {
     render() {
         return (
             <>
+                <h1>{this.props.lobby.name}</h1>
                 <SmartPlayer autoplay={true} {...this.props}/>
                 <SearchField {...this.props}/>
                 <PlayList indicateFirst={true} {...this.props}/>

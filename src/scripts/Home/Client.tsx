@@ -9,6 +9,7 @@ export default class Client extends React.Component<{ lobby: ILobby; playlist: I
 
     render() {
         return (<>
+                <h1>{this.props.lobby.name}</h1>
                 <SearchField {...this.props}/>
                 <PlayList indicateFirst={true} {...this.props}/>
             </>
