@@ -3,9 +3,10 @@ import PlayListItem from "./PlayListItem";
 import ISong from "../ISong";
 import ILobby from "../ILobby";
 import IPlaylist from "./IPlaylist";
-import IPlayerControls from "../Player/IPlayerControls";
+import ILobbyControls from "../Player/ILobbyControls";
+import {ListGroup} from "react-bootstrap";
 
-export default class PlayList extends React.Component<{ lobby: ILobby; playlist: IPlaylist } & IPlayerControls> {
+export default class PlayList extends React.Component<{ lobby: ILobby; playlist: IPlaylist; indicateFirst?: boolean } & ILobbyControls> {
     constructor(props: any) {
         super(props);
         console.log("con playlist",this.props);
@@ -15,12 +16,12 @@ export default class PlayList extends React.Component<{ lobby: ILobby; playlist:
         const {playlist} = this.props;
         console.log("playlist", playlist);
         const items = (playlist) && (playlist).map((song: ISong, i: number) => {
-            return <PlayListItem {...this.props} song={song} key={i} votable={true}/>
+            return <PlayListItem {...this.props} song={song} key={i} indicate={this.props.indicateFirst && 0===i} votable={0!==i}/>
         });
         return (
-            <>
+            <ListGroup >
                 {items}
-            </>
+            </ListGroup>
         );
     }
 }

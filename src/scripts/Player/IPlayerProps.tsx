@@ -1,7 +1,7 @@
 import ISong from "../ISong";
-import IPlayerControls from "./IPlayerControls";
+import ILobbyControls from "./ILobbyControls";
 
-export default interface IPlayerProps extends IPlayerControls{
+export default interface IPlayerProps extends ILobbyControls{
     autoplay?: boolean;
     song: ISong;
     onEnd?: ()=>any;

@@ -4,8 +4,7 @@ import Card from "react-bootstrap/Card";
 import IPlayer from "./IPlayer";
 import IPlayerProps from "./IPlayerProps";
 import getYouTubeID from "get-youtube-id-definately";
-import DoubleClick from "../PlayList/DoubleClick";
-import {YouTubeProps} from "react-youtube";
+import {useDoubleClick} from "doubleclicker";
 
 
 export default class YTPlayer extends React.Component<IPlayerProps> implements IPlayer {
@@ -23,9 +22,8 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
 
     private onClick = (a: any) => {
         const e = a.currentTarget.parentNode;
-        console.log("YTTT", e)
-        DoubleClick({
-            onSingleClick: () => {
+        useDoubleClick({
+            onClick: () => {
                 switch (this.target.getPlayerState()) {
                     case 1:
                         this.target.pauseVideo();

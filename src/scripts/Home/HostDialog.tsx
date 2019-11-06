@@ -29,7 +29,7 @@ class HostDialog extends React.Component<RouteComponentProps> {
                         <Form.Label>Password</Form.Label>
                         <Form.Control name="pass" type="password" placeholder="Password" defaultValue={"asd"}/>
                     </Form.Group>
-                    <Button variant="primary" disabled={this.state.pending} type="submit" block>
+                    <Button variant="success" disabled={this.state.pending} type="submit" block>
                         Submit
                     </Button>
                 </Form>

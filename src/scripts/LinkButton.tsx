@@ -8,11 +8,11 @@ interface props extends ButtonProps{
 
 export default class LinkButton extends React.Component<props>{
     render() {
+        const props = {...this.props};
+        delete props.to;
         return (
             <Link to={this.props.to}>
-                <Button {...this.props}>
-                    {this.props.children}
-                </Button>
+                <Button {...props}/>
             </Link>
         );
     }
