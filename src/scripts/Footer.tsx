@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {Link, NavLink, RouteComponentProps} from "react-router-dom";
 import store from "./Store";
 import ILobby from "./ILobby";
 import Api from "./Api";
+import {QRCode} from "react-qr-svg";
+import {Toast} from "react-bootstrap";
+import DeadLink from "./DeadLink";
+import QRToast from "./QRToast";
 
 export default class Footer extends React.Component<RouteComponentProps> {
     constructor(props: any) {
@@ -14,24 +18,28 @@ export default class Footer extends React.Component<RouteComponentProps> {
         });
     }
 
-    state = {lobby: store.getCurrentLobby()};
+    state = {lobby: store.getCurrentLobby(), toast: false};
 
 
     render() {
         const {lobby} = this.state;
         const hash = (lobby) ? (lobby! as ILobby).hash : undefined;
-        const deleteLobby = (lobby) && (<Link className={"nav-link"} to={"/"}
-                                              onClick={(e) => {
-                                                  Api.lobby(hash!).delete().then(_ => window.location.assign("/"));
-                                                  e.preventDefault();
-                                              }}>Delete Lobby</Link>);
-        const currentLink = (lobby) && <NavLink className={"nav-link"} to={"../lobby/" + hash}>Current</NavLink>;
+        const url = "/lobby/" + hash;
+        const currentLink = (lobby) && <NavLink className={"nav-link"} to={url}>Current</NavLink>;
+        const deleteLobby = (lobby) &&
+            (<DeadLink navLink to={"/"}
+                       onClick={() => Api.lobby(hash!).delete().then(() => window.location.assign("/"))}>
+                Delete Lobby</DeadLink>);
+        const shareLobby = <DeadLink navLink to={url} onClick={() => this.setState({toast: true})}>Share Lobby</DeadLink>;
+        const toast = <QRToast show={this.state.toast} value={url} handleClose={() => this.setState({toast: false})}/>;
         return (
-            <Navbar style={{height:"3em"}} fixed="bottom" bg="dark" variant="dark">
+            <Navbar style={{height: "3em"}} fixed="bottom" bg="dark" variant="dark">
                 <Nav className="mr-auto">
                     <NavLink className={"nav-link"} exact={true} to={"/"}>Home</NavLink>
                     {currentLink}
                     {deleteLobby}
+                    {shareLobby}
+                    {toast}
                 </Nav>
                 <Navbar.Brand target="_blank" rel="noopener noreferrer" href="https://www.disastles.com/">
                     <img
