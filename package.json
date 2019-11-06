@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/clipboard": "^2.0.1",
     "@types/jest": "^24.0.22",
     "@types/node": "^12.12.6",
     "@types/react": "^16.9.11",
@@ -11,6 +12,7 @@
     "@types/react-router": "^5.1.2",
     "@types/react-router-dom": "^5.1.2",
     "bootstrap": "^4.3.1",
+    "clipboard": "^2.0.4",
     "doubleclicker": "^1.0.1",
     "get-youtube-id-definately": "^1.0.3",
     "react": "^16.11.0",
@@ -46,6 +48,5 @@
   },
   "devDependencies": {
     "@types/react-youtube": "^7.6.2"
-  },
-  "proxy": "http://localhost:4000"
+  }
 }

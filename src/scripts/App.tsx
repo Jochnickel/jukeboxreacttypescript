@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import '../styles/App.css';
 import Footer from "./Footer";
 import Home from "./Home/Home";
@@ -18,7 +18,7 @@ import Token from "./Token";
 export default class App extends React.Component {
     constructor(props: any) {
         super(props);
-        Api.lobby.get().then(r=> {
+        Api.lobby.get().then(r => {
             if (r.meta.code === 200) {
                 console.info("Footer", r);
                 const lobby = r.data.lobby[0];
@@ -28,24 +28,26 @@ export default class App extends React.Component {
             }
         });
     }
+
     render() {
         return (
             <BrowserRouter>
                 <div className="App">
-                    <div className="container" style={{paddingBottom:"3.3em"}}>
+                    <div className="container" style={{paddingBottom: "3.3em"}}>
+                        <Switch>
+                            <Route path="/error/:message?" strict={false} component={ErrorPage}/>
 
-                        <Route path="/" exact={true} component={Home}/>
-                        <Route path="/error/:message?" strict={false} component={ErrorPage}/>
+                            <Route path="/host" exact={true}/>
+                            <Route path="/lobby/:hash?" component={Lobby}/>
 
-                        <Route path="/host" exact={true}/>
-                        <Route path="/lobby/:hash?" component={Lobby}/>
-
-                        <Route path={["/hostdialog", "/joindialog"]} exact={true}>
-                            <LinkButton to={"/"} block>Back</LinkButton>
-                        </Route>
-                        <Route path="/hostdialog" exact={true} component={HostDialog}/>
-                        <Route path="/joindialog" exact={true} component={JoinDialog}/>
-
+                            <Route path={["/hostdialog", "/joindialog"]} exact={true}>
+                                <LinkButton to={".."} block>Back</LinkButton>
+                                <Route path="/hostdialog" exact={true} component={HostDialog}/>
+                                <Route path="/joindialog" exact={true} component={JoinDialog}/>
+                            </Route>
+                            <Route path="/:else"><Redirect to={"/"}/></Route>
+                            <Route component={Home}/>
+                        </Switch>
                         <Route component={Footer}/>
                     </div>
                 </div>
