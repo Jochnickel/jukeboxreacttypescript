@@ -15,13 +15,13 @@ export default class Lobby extends React.Component<iProps> {
         super(props);
         console.log("lobby", props);
         Api.lobby(props.match.params.hash).get().then(r => this.setState({lobby: r.data.lobby})).catch(r => this.props.history.push("/error"));
-        Api.lobby(props.match.params.hash).playlist.get().then(r => this.setState({playlist: r.data.playlist || []})).catch(r => this.props.history.push("/error"));
+        Api.lobby(props.match.params.hash).playlist.get().then(this.setPlaylist).then(()=>this.setState({currentSong:this.state.playlist[0]})).catch(r => this.props.history.push("/error"));
     }
 
     state = {lobby: undefined, playlist: [], currentSong:undefined};
 
     private setPlaylist = (p: any)=>{
-        this.setState({playlist: p.data.playlist})
+        this.setState({playlist: p.data.playlist || []})
     };
 
     controls = {
