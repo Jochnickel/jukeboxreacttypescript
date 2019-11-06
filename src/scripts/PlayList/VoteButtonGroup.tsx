@@ -13,7 +13,7 @@ export default class VoteButtonGroup extends React.Component<{ song: ISong; lobb
 
     render() {
         return (
-            <ButtonGroup vertical>
+            <ButtonGroup size="lg" vertical>
                 <VoteButton onClick={this.voteUp} voted={this.props.song.voted_for === "UP"}
                             plus={true}>{this.props.song.vote_up}</VoteButton>
                 <VoteButton onClick={this.voteDown} voted={this.props.song.voted_for === "DOWN"}

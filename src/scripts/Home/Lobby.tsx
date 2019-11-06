@@ -5,7 +5,6 @@ import Host from "./Host";
 import ILobby from "../ILobby";
 import {RouteComponentProps} from "react-router";
 import ISong from "../ISong";
-import IPlaylist from "../PlayList/IPlaylist";
 
 interface iProps extends RouteComponentProps<{ hash: string }> {
 }
@@ -15,25 +14,27 @@ export default class Lobby extends React.Component<iProps> {
         super(props);
         console.log("lobby", props);
         Api.lobby(props.match.params.hash).get().then(r => this.setState({lobby: r.data.lobby})).catch(r => this.props.history.push("/error"));
-        Api.lobby(props.match.params.hash).playlist.get().then(this.setPlaylist).then(()=>this.setState({currentSong:this.state.playlist[0]})).catch(r => this.props.history.push("/error"));
+        Api.lobby(props.match.params.hash).playlist.get().then(this.setSongs).catch(r => this.props.history.push("/error"));
     }
 
     state = {lobby: undefined, playlist: [], currentSong:undefined};
 
-    private setPlaylist = (p: any)=>{
-        this.setState({playlist: p.data.playlist || []})
+    private setSongs = (p: any)=>{
+        this.setState({playlist: p.data.playlist || []});
+        this.setState({currentSong : this.state.playlist[0]});
     };
 
     controls = {
-        addSong: () => {
-            const vid = Api.YT.randomVideo();
-            Api.lobby(this.props.match.params.hash).song.post(vid).then(this.setPlaylist);
+        addSong: (url: string) => {
+            return Api.YT.urlToSong(url).then(d=>{
+                Api.lobby(this.props.match.params.hash).song.post({url:url,title:d.title}).then(this.setSongs);
+            });
         },
         removeSong: (song: ISong) => {
-            Api.lobby(this.props.match.params.hash).song(song.id).delete().then(this.setPlaylist).then(this.state.currentSong = this.state.playlist[0]);
+            Api.lobby(this.props.match.params.hash).song(song.id).delete().then(this.setSongs);
         },
         voteSong: (song: ISong, up: boolean) => {
-            Api.lobby(this.props.match.params.hash).song(song.id).vote(up ? "up" : "down").post().then(this.setPlaylist);
+            Api.lobby(this.props.match.params.hash).song(song.id).vote(up ? "up" : "down").post().then(p=>this.setState({playlist: p.data.playlist || []}));
         }
     };
 

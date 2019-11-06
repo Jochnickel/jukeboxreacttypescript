@@ -1,4 +1,5 @@
 import Token from "./Token";
+import ISong from "./ISong";
 
 const GET = "GET";
 const POST = "POST";
@@ -55,18 +56,26 @@ export default class Api {
         return index;
     })();
 
-    public static YT = (()=>{
-        const YT = ()=>{};
-        YT.randomVideo = ()=>{
+    public static YT = (() => {
+        const YT = () => {
+        };
+        YT.randomVideo = () => {
             const links = [
-                {url: "https://www.youtube.com/watch?v=FmRtF1rIuSQ", title: "Gubal 1"},
-                {url: "https://www.youtube.com/watch?v=nd6neK3a5es", title: "Gubal 2"},
-                {url: "https://www.youtube.com/watch?v=iNqL2QR-hFs", title: "Pirates"},
-                {url: "https://www.youtube.com/watch?v=h3p_9-R_siI", title: "Spacesauce"},
-                {url: "https://www.youtube.com/watch?v=JfO8uXlY1Wc", title: "Avengers"}
+                "https://www.youtube.com/watch?v=FmRtF1rIuSQ",
+                "https://www.youtube.com/watch?v=nd6neK3a5es",
+                "https://www.youtube.com/watch?v=iNqL2QR-hFs",
+                "https://www.youtube.com/watch?v=h3p_9-R_siI",
+                "https://www.youtube.com/watch?v=JfO8uXlY1Wc"
             ];
-            return links[Math.floor(Math.random()*links.length)];
+            return links[Math.floor(Math.random() * links.length)];
+        };
+        YT.urlToSong = (url: string) => {
+            return fetch("http://api.rest7.com/v1/youtube_info.php?url=" + url, {method: GET}).then(j => j.json()).then(d => {
+                d.title = (d.title as string).replace(/&amp;/g,"&").replace(/&quot;/g, '"').replace(/&apos;/g,"'").replace(/&gt;/g,">").replace(/&lt;/g,"<");
+                return d;
+            });
         };
         return YT;
-    })();
+    })
+    ();
 }
