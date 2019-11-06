@@ -30,7 +30,7 @@ export default class App extends React.Component {
         return (
             <BrowserRouter>
                 <div className="App">
-                    <div className="container">
+                    <div className="container" style={{paddingBottom:"3.3em"}}>
 
                         <Route path="/" exact={true} component={Home}/>
                         <Route path="/error/:message?" strict={false} component={ErrorPage}/>

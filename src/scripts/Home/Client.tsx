@@ -3,8 +3,9 @@ import ILobby from "../ILobby";
 import Host from "./Host";
 import IPlaylist from "../PlayList/IPlaylist";
 import IPlayerControls from "../Player/IPlayerControls";
+import ISong from "../ISong";
 
-export default class Client extends React.Component<{lobby:ILobby; playlist: IPlaylist} & IPlayerControls>{
+export default class Client extends React.Component<{lobby:ILobby; playlist: IPlaylist; song: any} & IPlayerControls>{
     render() {
         console.log("redirect client");
         return (

@@ -5,8 +5,9 @@ import PlayList from "../PlayList/PlayList";
 import {Button} from "react-bootstrap";
 import IPlaylist from "../PlayList/IPlaylist";
 import IPlayerControls from "../Player/IPlayerControls";
+import ISong from "../ISong";
 
-interface iProps{ lobby: ILobby; playlist: IPlaylist}
+interface iProps{ lobby: ILobby; playlist: IPlaylist; song: any}
 
 export default class Host extends React.Component<iProps & IPlayerControls> {
     render() {

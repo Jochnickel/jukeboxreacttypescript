@@ -2,22 +2,14 @@ import React from "react";
 import {ButtonGroup} from "react-bootstrap";
 import VoteButton from "./VoteButton";
 import ISong from "../ISong";
-import store from "../Store";
-import Api from "../Api";
+import ILobby from "../ILobby";
+import IPlayerControls from "../Player/IPlayerControls";
 
-export default class VoteButtonGroup extends React.Component<{ song: ISong }> {
-    voteUp = () => this.vote(true);
-    voteDown = () => this.vote(false);
+export default class VoteButtonGroup extends React.Component<{ song: ISong; lobby: ILobby;} & IPlayerControls> {
+    voteUp = () => this.props.voteSong(this.props.song,true);
+    voteDown = () => this.props.voteSong(this.props.song,true);
 
-    vote(up: boolean) {
-        const lobby = store.getCurrentLobby();
-        const hash = lobby && lobby.hash;
-        if (hash) {
-            Api.lobby(hash).song(this.props.song.id).vote(up ? "up" : "down").post().then(r => console.log("voteee", r));
-        } else {
-            console.error("no lobbyhash")
-        }
-    }
+
 
     render() {
         return (

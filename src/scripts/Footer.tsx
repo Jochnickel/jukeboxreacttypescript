@@ -27,7 +27,7 @@ export default class Footer extends React.Component<RouteComponentProps> {
                                               }}>Delete Lobby</Link>);
         const currentLink = (lobby) && <NavLink className={"nav-link"} to={"../lobby/" + hash}>Current</NavLink>;
         return (
-            <Navbar fixed="bottom" bg="dark" variant="dark">
+            <Navbar style={{height:"3em"}} fixed="bottom" bg="dark" variant="dark">
                 <Nav className="mr-auto">
                     <NavLink className={"nav-link"} exact={true} to={"/"}>Home</NavLink>
                     {currentLink}

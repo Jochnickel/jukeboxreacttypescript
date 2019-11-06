@@ -42,8 +42,9 @@ export default class YTPlayer extends React.Component<IPlayerProps> implements I
     };
 
     private onStateChange= (e: any) => {
-        console.log("yt onstate change",e.data===YouTube.PlayerState.PAUSED);
-        const ended = e.data===YouTube.PlayerState.ENDED;
+        if(e.data===YouTube.PlayerState.ENDED){
+            this.props.removeSong(this.props.song);
+        }
     };
 
     render() {

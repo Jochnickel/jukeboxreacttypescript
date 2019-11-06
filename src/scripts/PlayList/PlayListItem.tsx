@@ -2,8 +2,10 @@ import React from "react";
 import {Media} from "react-bootstrap";
 import VoteButtonGroup from "./VoteButtonGroup";
 import ISong from "../ISong";
+import ILobby from "../ILobby";
+import IPlayerControls from "../Player/IPlayerControls";
 
-export default class PlayListItem extends React.Component<{song: ISong; [any:string]:any}> {
+export default class PlayListItem extends React.Component<{song: ISong; lobby: ILobby; votable: boolean;} & IPlayerControls> {
     render() {
         return (
             <Media as="li">
@@ -22,7 +24,7 @@ export default class PlayListItem extends React.Component<{song: ISong; [any:str
                         fringilla. Donec lacinia congue felis in faucibus.
                     </p>
                 </Media.Body>
-                <VoteButtonGroup song={this.props.song}/>
+                <VoteButtonGroup {...this.props}/>
             </Media>
         );
     }
